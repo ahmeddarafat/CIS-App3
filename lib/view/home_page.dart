@@ -34,103 +34,105 @@ class HomePage extends StatelessWidget {
                     topRight: Radius.circular(32),
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 20.h),
-                    AppText(
-                      text: "${AppStrings.hi} Ahmed",
-                      color: AppColors.blue,
-                      fz: 20.sp,
-                    ),
-                    SizedBox(height: 10.h),
-                    AppText(
-                      text: AppStrings.welcomeBack,
-                      color: AppColors.black,
-                      fz: 25.sp,
-                      fw: FontWeight.bold,
-                    ),
-                    SizedBox(height: 10.h),
-                    SizedBox(
-                      height: 60.h,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Flexible(
-                            child: Container(
-                              height: 40.h,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.2),
-                                    blurRadius: 8,
-                                  ),
-                                ],
-                              ),
-                              child: PublicTextFormField(
-                                hint: AppStrings.search,
-                                controller: TextEditingController(),
-                                borderRadius: 8,
-                                borderColor: Colors.white,
-                                validator: (value) {
-                                  return null;
-                                },
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 20.h),
+                      AppText(
+                        text: "${AppStrings.hi} Ahmed",
+                        color: AppColors.blue,
+                        fz: 20.sp,
+                      ),
+                      SizedBox(height: 10.h),
+                      AppText(
+                        text: AppStrings.welcomeBack,
+                        color: AppColors.black,
+                        fz: 25.sp,
+                        fw: FontWeight.bold,
+                      ),
+                      SizedBox(height: 10.h),
+                      SizedBox(
+                        height: 60.h,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Flexible(
+                              child: Container(
+                                height: 40.h,
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.2),
+                                      blurRadius: 8,
+                                    ),
+                                  ],
+                                ),
+                                child: PublicTextFormField(
+                                  hint: AppStrings.search,
+                                  controller: TextEditingController(),
+                                  borderRadius: 8,
+                                  borderColor: Colors.white,
+                                  validator: (value) {
+                                    return null;
+                                  },
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(width: 10.w),
-                          InkWell(
-                            child: Container(
-                              height: 40.h,
-                              width: 40.h,
-                              decoration: BoxDecoration(
-                                color: AppColors.green,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: const Icon(
-                                Icons.search,
-                                color: AppColors.white,
+                            SizedBox(width: 10.w),
+                            InkWell(
+                              child: Container(
+                                height: 40.h,
+                                width: 40.h,
+                                decoration: BoxDecoration(
+                                  color: AppColors.green,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: const Icon(
+                                  Icons.search,
+                                  color: AppColors.white,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 10.h),
-                    const TitleRow(title: AppStrings.category),
-                    SizedBox(height: 10.h),
-                    SizedBox(
-                      height: 120.h,
-                      child: ListView.separated(
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: categoriesDemo.length,
-                        itemBuilder: (context, index) {
-                          return CategoryCard(
-                            icon: categoriesDemo[index].icon,
-                            category: categoriesDemo[index].category,
-                            numOfDoctors: categoriesDemo[index].numOfDoctors,
-                          );
-                        },
-                        separatorBuilder: (context, index) =>
-                            SizedBox(width: 20.w),
+                      SizedBox(height: 10.h),
+                      const TitleRow(title: AppStrings.category),
+                      SizedBox(height: 10.h),
+                      SizedBox(
+                        height: 120.h,
+                        child: ListView.separated(
+                          physics: const BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: categoriesDemo.length,
+                          itemBuilder: (context, index) {
+                            return CategoryCard(
+                              icon: categoriesDemo[index].icon,
+                              category: categoriesDemo[index].category,
+                              numOfDoctors: categoriesDemo[index].numOfDoctors,
+                            );
+                          },
+                          separatorBuilder: (context, index) =>
+                              SizedBox(width: 20.w),
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 15.h),
-                    const TitleRow(title: AppStrings.category),
-                    SizedBox(height: 15.h),
-                    Expanded(
-                      child: ListView.separated(
-                        itemCount: doctorsDemo.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return DoctorCard(doctor: doctorsDemo[index]);
-                        },
-                        separatorBuilder: (context, index) {
-                          return SizedBox(height: 10.h);
-                        },
+                      SizedBox(height: 15.h),
+                      const TitleRow(title: AppStrings.topRate),
+                      SizedBox(height: 15.h),
+                      Expanded(
+                        child: ListView.separated(
+                          itemCount: doctorsDemo.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return DoctorCard(doctor: doctorsDemo[index]);
+                          },
+                          separatorBuilder: (context, index) {
+                            return SizedBox(height: 10.h);
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
